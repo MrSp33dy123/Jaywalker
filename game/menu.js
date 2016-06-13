@@ -209,11 +209,10 @@ function selectMap() {
         data: {},
         type: 'POST',
         success: function(data){
-            $('#selectMap').fadeIn(500);
-            
             JSON.parse(data).forEach(function(currentVar) {
                 $('#selectMap').append('<a data-map-id="'+currentVar.MAPCODE +'" onclick="mapSelected(this);"><img alt="'+ currentVar.MAPNAME +'" src="maps/'+ currentVar.MAPCODE +'.jpg"><div class="text"><p class="title">'+ currentVar.MAPNAME +'</p><p class="description">'+ currentVar.MAPDESC +'</p></div></div>');
             });
+            $('#selectMap').fadeIn(500);
         },
         error: function(xhr,status){
             console.error("AJAX error! Contact website adminstrator or check network connection.");
@@ -225,10 +224,10 @@ function selectMap() {
 function mapSelected(sender) {
     $.ajax({ //Make AJAX request for a list of map levels
         url: "ajax/servegamedata.php",
-        data: {map:},
+        data: {map:$(sender).attr('data-map-id')},
         type: 'POST',
         success: function(data){
-            $('#selectMap').fadeIn(500);
+            
             
             JSON.parse(data).forEach(function(currentVar) {
                 $('#selectMap').append('<a data-map-id="'+currentVar.MAPCODE +'" onclick="mapSelected(this);"><img alt="'+ currentVar.MAPNAME +'" src="maps/'+ currentVar.MAPCODE +'.jpg"><div class="text"><p class="title">'+ currentVar.MAPNAME +'</p><p class="description">'+ currentVar.MAPDESC +'</p></div></div>');

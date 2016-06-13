@@ -19,8 +19,8 @@ error_reporting(E_ALL & E_NOTICE);
             "ID int(10) AUTO_INCREMENT",
             "MAPCODE varchar(8) NOT NULL",
             "LVLNUM int(3) NOT NULL",
-            "LVLCOORDSX varchar(100) NOT NULL",
-            "LVLCOORDSY varchar(100) NOT NULL",
+            "LVLCOORDSX decimal(3,20) NOT NULL",
+            "LVLCOORDSY decimal(3,20) NOT NULL",
             "SAFETOCRS BOOLEAN NOT NULL",
             "EXPLANATION varchar(255) NOT NULL",
             "PRIMARY KEY (ID)"
@@ -30,21 +30,16 @@ error_reporting(E_ALL & E_NOTICE);
     try {
         //SETUP CONNECTION
         $conn = new mysqli($SQLservername, $SQLusername, $SQLpassword);
-
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        };
-
+        if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);};
+        
         //CREATE TABLE OR DATABASE IF NOT EXISTS
         $conn->query("CREATE DATABASE IF NOT EXISTS ".$SQLdbname);
         $conn->select_db($SQLdbname);
-        if (empty($conn->query("SELECT ID FROM MAPDATA"))) {
-            echo "MAPDATA table not found, creating now! Database ".$SQLdbname." may have been created as well.";
-            $sql = "CREATE TABLE MAPDATA (" . implode(",", $tableinfo['MAPDATA']) . ")";
-            if (! $conn->query($sql)) {
-                printf("SQL create table failure: %s\n", $conn->error);
-            };
-        };
+        foreach(array_keys($tableinfo) as $key) {
+            $conn->query("CREATE TABLE IF NOT EXISTS ".$key);
+            echo("CHECKED FOR TABLE " . $key);
+        }
+        
         if (!isset($_POST['map'])) {
             //Query Database for list of maps, including location info for each (but not answers)
             $result = $conn->query("SELECT MAPCODE, MAPNAME, MAPDESC, OFFICIAL FROM MAPDATA");
@@ -56,7 +51,12 @@ error_reporting(E_ALL & E_NOTICE);
             echo json_encode($mapList);
         } else {
             if (!isset($_POST['answer'])) {
-                $result = $conn->query("SELECT  LEVELDATA");
+                $result = $conn->query('SELECT (LVLNUM LVLCOORDSX, LVLCOORDSY) FROM LEVELDATA WHERE MAPCODE="'. mysqli_real_escape_string($_POST['map']).'"');
+                $lvlList = [];
+                while ($row = $result->fetch_assoc()) {
+                    array_push($lvlList, $row);
+                }
+                echo json_encode($lvlList);
             } else {
                 //Query $_POST['answer'] in map $_POST['map'] for round $_POST['round']
             }

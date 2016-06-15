@@ -37,7 +37,6 @@ error_reporting(E_ALL & E_NOTICE);
         $conn->select_db($SQLdbname);
         foreach(array_keys($tableinfo) as $key) {
             $conn->query("CREATE TABLE IF NOT EXISTS ".$key);
-            echo("CHECKED FOR TABLE " . $key);
         }
         
         if (!isset($_POST['map'])) {

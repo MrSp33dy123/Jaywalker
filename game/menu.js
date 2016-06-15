@@ -209,9 +209,14 @@ function selectMap() {
         data: {},
         type: 'POST',
         success: function(data){
-            JSON.parse(data).forEach(function(currentVar) {
-                $('#selectMap').append('<a data-map-id="'+currentVar.MAPCODE +'" onclick="mapSelected(this);"><img alt="'+ currentVar.MAPNAME +'" src="maps/'+ currentVar.MAPCODE +'.jpg"><div class="text"><p class="title">'+ currentVar.MAPNAME +'</p><p class="description">'+ currentVar.MAPDESC +'</p></div></div>');
-            });
+            
+            if (JSON.parse(data).length == 0) {
+                $('#selectMap').text('No maps could be loaded from the server. Please try again later.')
+            } else {
+                JSON.parse(data).forEach(function(currentVar) {
+                    $('#selectMap').append('<a data-map-id="'+currentVar.MAPCODE +'" onclick="mapSelected(this);"><img alt="'+ currentVar.MAPNAME +'" src="maps/'+ currentVar.MAPCODE +'.jpg"><div class="text"><p class="title">'+ currentVar.MAPNAME +'</p><p class="description">'+ currentVar.MAPDESC +'</p></div></div>');
+                });
+            }
             $('#selectMap').fadeIn(500);
         },
         error: function(xhr,status){

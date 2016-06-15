@@ -403,6 +403,9 @@ nav > a {
     position:fixed;
     width:100%;
     text-align: center;
+    color:white;
+    font-style: italic;
+    font-family:Stellar;
 }
 #selectMap > a {
     width:18vw;

@@ -49,7 +49,7 @@
                         <div id="accountOverlay">
                             <div class="formWrapper">
                                 <form id="createAccountForm" class="centered">
-                                    <input id="usernameInput" name="username" spellcheck="false" autocomplete="off" maxlength="32" placeholder="How will your friends know you?" type="text"><br>
+                                    <input id="usernameInput" name="username" spellcheck="false" autocomplete="off" maxlength="32" placeholder='"A name is but an alias; a word used to identify oneself"' type="text"><br>
                                 </form>
                                 <div class="background"></div>
                             </div>

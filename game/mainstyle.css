@@ -436,6 +436,7 @@ nav > a {
 #selectMap > a > .text > .title {
     font-family:Code;
     font-weight:bold;
+    font-style: normal;
     font-size:150%;
     color:inherit;
     transition:inherit;

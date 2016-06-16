@@ -221,7 +221,7 @@ function selectMap() {
         },
         error: function(xhr,status){
             console.error("AJAX error! Contact website adminstrator or check network connection.");
-            alert("AJAX error! Contact website adminstrator or check network connection.");
+            $('#selectMap').text('The request to the server enountered an error. Check your internet connection.')
         }
     });
 }
@@ -233,10 +233,6 @@ function mapSelected(sender) {
         type: 'POST',
         success: function(data){
             
-            
-            JSON.parse(data).forEach(function(currentVar) {
-                $('#selectMap').append('<a data-map-id="'+currentVar.MAPCODE +'" onclick="mapSelected(this);"><img alt="'+ currentVar.MAPNAME +'" src="maps/'+ currentVar.MAPCODE +'.jpg"><div class="text"><p class="title">'+ currentVar.MAPNAME +'</p><p class="description">'+ currentVar.MAPDESC +'</p></div></div>');
-            });
         },
         error: function(xhr,status){
             console.error("AJAX error! Contact website adminstrator or check network connection.");

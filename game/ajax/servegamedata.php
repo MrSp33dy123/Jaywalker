@@ -19,8 +19,8 @@ error_reporting(E_ALL & E_NOTICE);
             "ID int(10) AUTO_INCREMENT",
             "MAPCODE varchar(8) NOT NULL",
             "LVLNUM int(3) NOT NULL",
-            "LVLCOORDSX decimal(3,20) NOT NULL",
-            "LVLCOORDSY decimal(3,20) NOT NULL",
+            "LVLCOORDSX varchar(30) NOT NULL",
+            "LVLCOORDSY varchar(30) NOT NULL",
             "SAFETOCRS BOOLEAN NOT NULL",
             "EXPLANATION varchar(255) NOT NULL",
             "PRIMARY KEY (ID)"
@@ -36,7 +36,7 @@ error_reporting(E_ALL & E_NOTICE);
         $conn->query("CREATE DATABASE IF NOT EXISTS ".$SQLdbname);
         $conn->select_db($SQLdbname);
         foreach(array_keys($tableinfo) as $key) {
-            $conn->query("CREATE TABLE IF NOT EXISTS ".$key);
+            $conn->query("CREATE TABLE IF NOT EXISTS ".$key." (".implode(",",$tableinfo[$key]).")");
         }
         
         if (!isset($_POST['map'])) {

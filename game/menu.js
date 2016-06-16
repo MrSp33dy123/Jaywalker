@@ -4,6 +4,8 @@ var BGcity = document.getElementById("bgCity");
 var glitchSFX = document.getElementById("glitch_sfx");
 var themeLivery = ['#00FFFF','#FFFFFF','#808080','rgb(0, 194, 190)'];
 var username = '';
+var mapLevels = [];
+var currentMap = '';
 
 $(document).ready(function() {
     console.log("Typing");
@@ -221,22 +223,25 @@ function selectMap() {
         },
         error: function(xhr,status){
             console.error("AJAX error! Contact website adminstrator or check network connection.");
-            $('#selectMap').text('The request to the server enountered an error. Check your internet connection.')
+            $('#selectMap').text('The request to the server enountered an error. Check your internet connection, or try again later.');
         }
     });
 }
 
 function mapSelected(sender) {
+    currentMap = $(sender).attr('data-map-id');
+    console.log(currentMap);
     $.ajax({ //Make AJAX request for a list of map levels
         url: "ajax/servegamedata.php",
-        data: {map:$(sender).attr('data-map-id')},
+        data: {map:currentMap},
         type: 'POST',
         success: function(data){
-            
+            mapLevels = JSON.parse(data);
+            initGame();
         },
         error: function(xhr,status){
             console.error("AJAX error! Contact website adminstrator or check network connection.");
-            alert("AJAX error! Contact website adminstrator or check network connection.");
+            $('#selectMap').text('The request to the server enountered an error. Check your internet connection, or try again later.');
         }
     });
     $(sender).css({ //As soon as AJAX request is sent, begin loading sequence.
@@ -246,7 +251,7 @@ function mapSelected(sender) {
     setTimeout(function(){
         $('#bgVideo').hide();
         $('#selectMap').hide();
-    },550);
+    },530);
 }
 
 function getCookie(cname) {

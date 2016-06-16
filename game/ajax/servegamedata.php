@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL & E_NOTICE);
 
-//if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $SQLservername = "127.0.0.1";
     $SQLusername = "root";
     $SQLpassword = "";
@@ -50,11 +50,12 @@ error_reporting(E_ALL & E_NOTICE);
             echo json_encode($mapList);
         } else {
             if (!isset($_POST['answer'])) {
-                $result = $conn->query('SELECT (LVLNUM LVLCOORDSX, LVLCOORDSY) FROM LEVELDATA WHERE MAPCODE="'. mysqli_real_escape_string($_POST['map']).'"');
+                $result = $conn->query("SELECT LVLNUM, LVLCOORDSX, LVLCOORDSY FROM LEVELDATA WHERE MAPCODE = '".mysqli_real_escape_string($_POST['map'])."'");
                 $lvlList = [];
                 while ($row = $result->fetch_assoc()) {
                     array_push($lvlList, $row);
                 }
+                echo ('MAPCODE: '.mysqli_real_escape_string($_POST['map']));
                 echo json_encode($lvlList);
             } else {
                 //Query $_POST['answer'] in map $_POST['map'] for round $_POST['round']
@@ -64,7 +65,7 @@ error_reporting(E_ALL & E_NOTICE);
     } catch(exception $e) {
         echo "Error: " . $e->getMessage();
     };
-//} else {
-//    echo('<p>This page is for use as part of a POST request; it is not supposed to be viewed in the browser.</p>');
-//};
+} else {
+    echo('<p style="text-align:center;position:relative;top:50%;">This page is for use as part of a POST request; it is not supposed to be viewed in the browser.</p>');
+};
 ?>

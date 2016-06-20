@@ -145,13 +145,6 @@ $('#title').click(function(){
         $('#accountOverlay').fadeIn(300);
         $('#title').fadeOut(300);
         $('nav').fadeOut(300);
-        $(document).keyup(function(e) {
-            if (e.keyCode == 27) { //Escape key
-                $('#accountOverlay').fadeOut(300);
-                $('#title').fadeIn(300);
-                $('nav').fadeIn(300);
-            }
-        });
         $(".formWrapper").on("click", ".background", function() {
             $("#accountOverlay").fadeOut(480);
             $('#title').fadeIn(300);

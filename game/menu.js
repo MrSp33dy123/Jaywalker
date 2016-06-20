@@ -226,10 +226,11 @@ function mapSelected(sender) {
     console.log(currentMap);
     $.ajax({ //Make AJAX request for a list of map levels
         url: "ajax/servegamedata.php",
-        data: {map:currentMap},
-        type: 'POST',
+        data: {'map' : 'arwhrlel'/*currentMap*/},
+        method: 'POST',
+        dataType: 'json',
         success: function(data){
-            mapLevels = JSON.parse(data);
+            mapLevels = data;
             initGame();
         },
         error: function(xhr,status){

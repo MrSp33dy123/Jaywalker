@@ -10,10 +10,16 @@ function initGame() {
     $('#accountOverlay').hide();
     $('#title').hide();
     //$('#map').show();
-    var streetview = new google.maps.StreetViewPanorama(document.getElementById('map'), {
-        visible:true
-    });
-    console.warn(getMapData());
+    var streetview = new google.maps.StreetViewPanorama(
+      document.getElementById('map'), {
+        position: {lat:-43.640022, lng:172.486058},
+        pov: {
+          heading: 0,
+          pitch: 0
+        }
+      });
+    $('#map').show();
+    //console.warn(getMapData());
     
     $('#nextLoc').click(function(){
         if (locIteration < mapData.length) {

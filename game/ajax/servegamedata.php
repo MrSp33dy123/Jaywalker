@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     [-43.619917,172.4819197, true, "The map description said there were gravel roads, and well... we needed one. Can you see any cars? No? Cross!"],
                     [-43.6413878,172.4746944, false, "Crossing at intersections is a bad idea. Instead of having two directions of traffic to worry about, you effectively have four."],
                     [-43.6449333,172.5015875, false, "Crossing on a main road is just generally a bad idea. The cars travel so fast."],
-                    [-43.6434251,172.4943935, false "This is what is known as 'da hood', kids. Crossing the road here is a bad idea, unless it's for the sole purpose of getting yer a** out of here ASAP."],
+                    [-43.6434251,172.4943935, false "This is what is known as &#39;da hood&#39;, kids. Crossing the road here is a bad idea, unless it's for the sole purpose of getting yer a** out of here ASAP."],
                     [-43.6379826,172.4833182, true, "Here is fine to cross. Cars won't be going to fast, and you have good visibility. Just make sure your vision is not blocked by a parked car by the side of the road."],
                     [-43.6416564,172.4707025, true, "Roundabouts are a dodgey place to be near-for both pedestrians and cars- however if you need to cross, then here is the place to do so. With that said, watch out for traffic in both directions."]
                 ]

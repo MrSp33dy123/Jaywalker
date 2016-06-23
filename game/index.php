@@ -61,8 +61,8 @@
                         </a>
                         <div id="selectMap">
                         </div>
-                        <div id="muteButton" class="fa fa-volume-up" aria-hidden="true"></div>
                         <div id="map" style="height:100vh; width:100vw;"></div>
+                        <div id="muteButton" class="fa fa-volume-up" aria-hidden="true"></div>
                         <div id="gameOverlay">
                             <a id="nextLoc">Next Location</a>
                         </div>

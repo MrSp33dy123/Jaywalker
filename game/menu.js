@@ -6,6 +6,7 @@ var themeLivery = ['#00FFFF','#FFFFFF','#808080','rgb(0, 194, 190)'];
 var username = '';
 var mapLevels = [];
 var currentMap = '';
+var mute = false;
 
 $(document).ready(function() {
     console.log("Typing");
@@ -209,7 +210,7 @@ function selectMap() {
                 $('#selectMap').text('No maps could be loaded from the server. Please try again later.')
             } else {
                 JSON.parse(data).forEach(function(currentVar) {
-                    
+                    $('#selectMap').append('<a data-map-id="'+currentVar.MAPCODE +'" onclick="mapSelected(this);"><img alt="'+ currentVar.MAPNAME +'" src="maps/'+ currentVar.MAPCODE +'.jpg"><div class="text"><p class="title">'+ currentVar.MAPNAME +'</p><p class="description">'+ currentVar.MAPDESC +'</p></div></div>');
                 });
             }
             $('#selectMap').fadeIn(500);
@@ -247,6 +248,25 @@ function mapSelected(sender) {
         $('#selectMap').hide();
     },530);
 }
+
+$('#muteButton').click(function(){
+    if (mute == false) {
+        $(this).toggleClass('fa-volume-off');
+        $(this).css({'margin-right':'16px;'});
+        BGlake.volume = 0
+        BGcity.volume = 0
+        glitchSFX.volume = 0
+        mute = true;
+    } else {
+        $(this).toggleClass('fa-volume-up');
+        $(this).css({'margin-right':'8px;'});
+        BGlake.volume = 0.1
+        BGcity.volume = 0.5
+        glitchSFX.volume = 1
+        mute = false;
+    }
+});
+
 
 function getCookie(cname) {
     var name = cname + "=";

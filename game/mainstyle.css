@@ -483,7 +483,18 @@ nav > a {
 }
 
 #muteButton {
-    
+    position: absolute;
+    font-size:150%;
+    right:0px;
+    top:0px;
+    margin:8px;
+    cursor:pointer;
+    transition:all linear 180ms;
+}
+#muteButton:hover {
+    color:cyan;
+    transform:scale(1.25);
+    opacity:70%;
 }
 
 #gameOverlay {

@@ -21,7 +21,8 @@ function initGame() {
         clickToGo:false,
         imageDateControl:false,
         linksControl:false,
-        fullscreenControl:false
+        fullscreenControl:false,
+        disableDoubleClickZoom:true
     });
     $('#map').show();
     

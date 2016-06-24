@@ -498,10 +498,36 @@ nav > a {
 }
 
 #gameOverlay {
-    top: 50%;
     position: absolute;
+    display:block;
 }
 
+#dialogueBox {
+    background-color:RGBA(5,5,5,0.7);
+    position:absolute;
+    left:50%;
+    transform:translate(-50%);
+    bottom:0px;
+}
+#dialogueBox:before {
+    background:linear-gradient(to right, rgba(5,5,5,0), rgba(5,5,5,0.7));
+    position:absolute;
+    top:0px;
+    height:100%;
+    left:0px;
+    transform:translate(-100%);
+    width:12px;
+    content:" ";
+}
+#dialogueBox:after {
+    background:linear-gradient(to left, rgba(5,5,5,0), rgba(5,5,5,0.7));
+    position:absolute;
+    top:0px;
+    height:100%;
+    left:100%;
+    width:12px;
+    content:" ";
+}
 
 .flashRed {
     border-color:red !important;

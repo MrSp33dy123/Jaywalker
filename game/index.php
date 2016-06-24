@@ -65,6 +65,13 @@
                         <div id="muteButton" class="fa fa-volume-up" aria-hidden="true"></div>
                         <div id="gameOverlay">
                             <a id="nextLoc">Next Location</a>
+                            <div id="dialogueBox">
+                                <div id="answerBox">
+                                    <a class="safe">Safe</a>
+                                    <a class="unsure">Unsure</a>
+                                    <a class="unsafe">Unsafe</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

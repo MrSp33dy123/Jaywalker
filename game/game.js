@@ -36,7 +36,9 @@ function initGame() {
     });
 }
 
-
+$('#answerBox > a').click(function(){
+    $('#gameOverlay').css({'min-height':'75%'});
+});
 
 
 function startGame() {

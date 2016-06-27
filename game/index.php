@@ -11,7 +11,7 @@
         <meta property="og:description" content="">
         <meta property="og:title" content="JAYWALKER">
         <meta property="og:type" content="website">
-        <meta property="og:url" content="<?php echo $serverBaseURL ?>">
+        <meta property="og:url" content="">
         <meta property="og:image" content="">
         <meta property="og:image:width" content="300">
         <meta property="og:image:height" content="300">
@@ -68,8 +68,21 @@
                                 <a class="safe">Safe</a>
                                 <a class="unsure">Unsure</a>
                                 <a class="unsafe">Unsafe</a>
-                            </div><br>
-                            <a id="nextLoc">Next Location</a>
+                            </div>
+                            <div class="background"></div>
+                            <div class="response">
+                                teeeeeeeeeeeeeeeeeeeeeeeeeeeeeest
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                test
+                            </div>
+<!--                            <a id="nextLoc">Next Location</a>-->
                         </div>
                     </div>
                 </div>

@@ -502,13 +502,17 @@ nav > a {
     left:50%;
     bottom:0px;
     transform:translate(-50%);
-    width:75%;
-    height:45px;
-    background-color:RGBA(5,5,5,0.7);
+    width:35%;
+/*    background-color:RGBA(5,5,5,0.7);*/
     color:white;
     font-family:Stellar;
     text-align: center;
+    font-size:180%;
+    min-height:10px;
+    transition:min-height ease-in-out 560ms;
+    height:45px;
 }
+/*
 #gameOverlay:before {
     background:linear-gradient(to right, rgba(5,5,5,0), rgba(5,5,5,0.7));
     position:absolute;
@@ -527,6 +531,55 @@ nav > a {
     left:100%;
     width:12px;
     content:" ";
+}
+*/
+#gameOverlay > .background {
+    border-bottom:solid 42px RGBA(5,5,5,0.7);
+    border-left:solid 42px RGBA(0,0,0,0);
+    border-right:solid 42px RGBA(0,0,0,0);
+    position:absolute;
+    top:0px;
+    width:100%;
+    left:50%;
+    box-sizing:content-box;
+    transform:translate(-50%);
+    z-index:-1;
+}
+#answerBox {
+    display: flex;
+    justify-content: space-between;
+}
+#answerBox .safe {
+    color:rgb(205,255,205);
+}
+#answerBox .unsure {
+    color:rgb(255,255,205);
+}
+#answerBox .unsafe {
+    color:rgb(255,205,205);
+}
+#answerBox .safe:hover {
+    color:rgb(105,255,105);
+}
+#answerBox .unsure:hover {
+    color:rgb(255,255,105);
+}
+#answerBox .unsafe:hover {
+    color:rgb(255,105,105);
+}
+#answerBox > * {
+    padding-bottom:12px;
+    padding-left:18px;
+    padding-right:18px;
+    transition:all linear 200ms;
+}
+#answerBox > *:hover {
+    background-color:rgba(0,255,255,0.1);
+}
+
+#gameOverlay > .response {
+    width:100%;
+    text-align:center;
 }
 
 .flashRed {

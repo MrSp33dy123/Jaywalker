@@ -499,17 +499,17 @@ nav > a {
 
 #gameOverlay {
     position: absolute;
-    display:block;
-}
-
-#dialogueBox {
-    background-color:RGBA(5,5,5,0.7);
-    position:absolute;
     left:50%;
-    transform:translate(-50%);
     bottom:0px;
+    transform:translate(-50%);
+    width:75%;
+    height:45px;
+    background-color:RGBA(5,5,5,0.7);
+    color:white;
+    font-family:Stellar;
+    text-align: center;
 }
-#dialogueBox:before {
+#gameOverlay:before {
     background:linear-gradient(to right, rgba(5,5,5,0), rgba(5,5,5,0.7));
     position:absolute;
     top:0px;
@@ -519,7 +519,7 @@ nav > a {
     width:12px;
     content:" ";
 }
-#dialogueBox:after {
+#gameOverlay:after {
     background:linear-gradient(to left, rgba(5,5,5,0), rgba(5,5,5,0.7));
     position:absolute;
     top:0px;

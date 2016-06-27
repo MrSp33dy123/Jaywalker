@@ -49,7 +49,7 @@
                         <div id="accountOverlay">
                             <div class="formWrapper">
                                 <form id="createAccountForm" class="centered">
-                                    <input id="usernameInput" name="username" spellcheck="false" autocomplete="off" maxlength="32" placeholder='"A name is but an alias; a word used to identify oneself"' type="text"><br>
+                                    <input id="usernameInput" name="username" spellcheck="false" autocomplete="off" maxlength="32" placeholder='How will your friends know you?' type="text"><br>
                                 </form>
                                 <div class="background"></div>
                             </div>
@@ -64,14 +64,12 @@
                         <div id="map" style="height:100vh; width:100vw;"></div>
                         <div id="muteButton" class="fa fa-volume-up" aria-hidden="true"></div>
                         <div id="gameOverlay">
+                            <div id="answerBox">
+                                <a class="safe">Safe</a>
+                                <a class="unsure">Unsure</a>
+                                <a class="unsafe">Unsafe</a>
+                            </div><br>
                             <a id="nextLoc">Next Location</a>
-                            <div id="dialogueBox">
-                                <div id="answerBox">
-                                    <a class="safe">Safe</a>
-                                    <a class="unsure">Unsure</a>
-                                    <a class="unsafe">Unsafe</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

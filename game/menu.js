@@ -8,6 +8,33 @@ var mapLevels = [];
 var currentMap = '';
 var mute = false;
 
+var tempMapdata = {
+    "HqlHapAz":{
+        "MAPCODE":"HqlHapAz",
+        "MAPNAME":"Lincoln, New Zealand",
+        "MAPDESC":"A small map based in Lincoln, Canterbury. Locations range from modern subdivisions to outback gravel paths and old main roads.",
+        "OFFICIAL":"1",
+        "LEVELS":[
+            [-43.640204,172.4847637,true,"Right here is a pedestrian crossing--the designated places for you to cross. It's safe to cross here, but still be visualent to oncoming vehicles."],
+            [-43.6327348,172.4845592,false,"You should be careful with this road as cars will begin to travel quite fast down it. Don't cross, as there is a car approaching."],
+            [-43.619917,172.4819197,true,"The map description said there were gravel roads, and well... we needed one. Can you see any cars? No? Cross!"],
+            [-43.6413878,172.4746944,false,"Crossing at intersections is a bad idea. Instead of having two directions of traffic to worry about, you effectively have four."],
+            [-43.6449333,172.5015875,false,"Crossing on a main road is just generally a bad idea. The cars travel so fast."],[-43.6434251,172.4943935,false,"This is what is known as 'da hood', kids. Crossing the road here is a bad idea, unless it's for the sole purpose of getting yer a** out of here ASAP."],[-43.6379826,172.4833182,true,"Here is fine to cross. Cars won't be going to fast, and you have good visibility. Just make sure your vision is not blocked by a parked car by the side of the road."],
+            [-43.6416564,172.4707025,true,"Roundabouts are a dodgey place to be near - for both pedestrians and cars - however if you need to cross, then here is the place to do so. With that said, watch out for traffic in both directions."]
+        ]
+    },
+    "hdsHoINa":{
+        "MAPCODE":"hdsHoINa",
+        "MAPNAME":"New Zealand",
+        "MAPDESC":"A map featuring locations from all around New Zealand. Mountains to beaches, from north to south, it's all in here.",
+        "OFFICIAL":"1"
+    }
+};
+
+
+
+
+
 $(document).ready(function() {
     console.log("Typing");
     $("#loadingText p:nth-of-type(1)").typed({
@@ -200,45 +227,68 @@ function selectMap() {
     $('#loadingText').hide();
     $('#accountOverlay').hide();
     $('#title').hide();
-    $.ajax({
-        url: "ajax/servegamedata.php",
-        data: {},
-        type: 'POST',
-        success: function(data){
-            
-            if (JSON.parse(data).length == 0) {
-                $('#selectMap').text('No maps could be loaded from the server. Please try again later.')
-            } else {
-                JSON.parse(data).forEach(function(currentVar) {
-                    $('#selectMap').append('<a data-map-id="'+currentVar.MAPCODE +'" onclick="mapSelected(this);"><img alt="'+ currentVar.MAPNAME +'" src="maps/'+ currentVar.MAPCODE +'.jpg"><div class="text"><p class="title">'+ currentVar.MAPNAME +'</p><p class="description">'+ currentVar.MAPDESC +'</p></div></div>');
-                });
-            }
-            $('#selectMap').fadeIn(500);
-        },
-        error: function(xhr,status){
-            console.error("AJAX error! Contact website adminstrator or check network connection.");
-            $('#selectMap').text('The request to the server enountered an error. Check your internet connection, or try again later.');
+//    $.ajax({
+//        url: "ajax/servegamedata.php",
+//        data: {},
+//        type: 'POST',
+//        success: function(data){
+//            
+//            if (JSON.parse(data).length == 0) {
+//                $('#selectMap').text('No maps could be loaded from the server. Please try again later.')
+//            } else {
+//                JSON.parse(data).forEach(function(currentVar) {
+//                    $('#selectMap').append('<a data-map-id="'+currentVar.MAPCODE +'" onclick="mapSelected(this);"><img alt="'+ currentVar.MAPNAME +'" src="maps/'+ currentVar.MAPCODE +'.jpg"><div class="text"><p class="title">'+ currentVar.MAPNAME +'</p><p class="description">'+ currentVar.MAPDESC +'</p></div></div>');
+//                });
+//                console.warn(data);
+//            }
+//            $('#selectMap').fadeIn(500);
+//        },
+//        error: function(xhr,status){
+//            console.error("AJAX error! Contact website adminstrator or check network connection.");
+//            $('#selectMap').text('The request to the server enountered an error. Check your internet connection, or try again later.');
+//        }
+//    });
+    
+    //TEMP-------
+//        tempMapdata.forEach(function(currentVar) {
+//            $('#selectMap').append('<a data-map-id="'+currentVar.MAPCODE +'" onclick="mapSelected(this);"><img alt="'+ currentVar.MAPNAME +'" src="maps/'+ currentVar.MAPCODE +'.jpg"><div class="text"><p class="title">'+ currentVar.MAPNAME +'</p><p class="description">'+ currentVar.MAPDESC +'</p></div></div>');
+//        });
+//        $('#selectMap').fadeIn(500);
+    
+    for (var key in tempMapdata) {
+        if (tempMapdata.hasOwnProperty(key)) {
+            $('#selectMap').append('<a data-map-id="'+tempMapdata[key].MAPCODE +'" onclick="mapSelected(this);"><img alt="'+ tempMapdata[key].MAPNAME +'" src="maps/'+ tempMapdata[key].MAPCODE +'.jpg"><div class="text"><p class="title">'+ tempMapdata[key].MAPNAME +'</p><p class="description">'+ tempMapdata[key].MAPDESC +'</p></div></div>');
         }
-    });
+    }
+    $('#selectMap').fadeIn(500);
+    //----------
 }
 
 function mapSelected(sender) {
     currentMap = $(sender).attr('data-map-id');
     console.log(currentMap);
-    $.ajax({ //Make AJAX request for a list of map levels
-        url: "ajax/servegamedata.php",
-        data: {'map' : 'arwhrlel'/*currentMap*/},
-        method: 'POST',
-        dataType: 'json',
-        success: function(data){
-            mapLevels = data;
-            initGame();
-        },
-        error: function(xhr,status){
-            console.error("AJAX error! Contact website adminstrator or check network connection.");
-            $('#selectMap').text('The request to the server enountered an error. Check your internet connection, or try again later.');
-        }
-    });
+//    $.ajax({ //Make AJAX request for a list of map levels
+//        url: "ajax/servegamedata.php",
+//        data: {'map' : 'arwhrlel'/*currentMap*/},
+//        method: 'POST',
+//        dataType: 'json',
+//        success: function(data){
+//            console.warn(JSON.stringify(data));
+//            mapLevels = data;
+//            initGame();
+//        },
+//        error: function(xhr,status){
+//            console.error("AJAX error! Contact website adminstrator or check network connection.");
+//            $('#selectMap').text('The request to the server enountered an error. Check your internet connection, or try again later.');
+//        }
+//    });
+    
+    //TEMP------
+        mapLevels = tempMapdata;
+        initGame();
+    
+    //----------
+    
     $(sender).css({ //As soon as AJAX request is sent, begin loading sequence.
         'transform':'scale(8)',
         opacity:'0'

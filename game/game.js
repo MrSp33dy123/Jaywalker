@@ -1,9 +1,5 @@
 "use strict";
 var locIteration = 0;
-/*var mapData = [
-    [-43.640022, 172.486058, false, 'There are multiple cars approaching on both sides of the road. You must wait for a large enough gap in the traffic to safely cross.\nIt is not a good idea to cross here as there is a designated pedestrian crossing only a few metres down the road. Cross there.'],
-    [-43.634008, 172.486040, true, "It's scarcer out here than in a Mad Max movie. Although there is no pedestrian crossing, there are no cars as far as the eye can see and this road has no blind spots."]
-];*/
 
 function initGame() {
     $('#loadingText').hide();
@@ -24,11 +20,13 @@ function initGame() {
         fullscreenControl:false,
         disableDoubleClickZoom:true
     });
+    streetview.setPosition({lat: mapLevels[currentMap]['LEVELS'][locIteration][0], lng: mapLevels[currentMap]['LEVELS'][locIteration][1]});
     $('#map').show();
+    $('#gameOverlay').fadeIn(380);
     
     $('#nextLoc').click(function(){
         if (locIteration < mapLevels.length) {
-            streetview.setPosition({lat: mapLevels[locIteration][0], lng: mapLevels[locIteration][1]});
+            streetview.setPosition({lat: mapLevels[currentMap]['LEVELS'][locIteration][0], lng: mapLevels[currentMap]['LEVELS'][locIteration][1]});
             locIteration++;
         } else {
             alert('Map complete!');
@@ -37,7 +35,19 @@ function initGame() {
 }
 
 $('#answerBox > a').click(function(){
+    $(this).css("background-color","rgba(0,255,255,0.1)")
+    if (($(this).attr('class') == 'safe' && mapLevels[currentMap]['LEVELS'][locIteration][2] == true) || ($(this).attr('class') == 'unsafe' && mapLevels[currentMap]['LEVELS'][locIteration][2] == false)) {
+        $('#gameOverlay > .response').css("color","green");
+        $(this).css('background-color','rgba(0,120,0,0.2)');
+        $('#gameOverlay > .response').html("<i>Correct! </i>" + mapLevels[currentMap]['LEVELS'][locIteration][3]);
+    } else {
+        $('#gameOverlay > .response').css("color","red");
+        $(this).css('background-color','rgba(0,120,0,0.2)');
+        $('#gameOverlay > .response').html("<i>Inorrect! </i>" + mapLevels[currentMap]['LEVELS'][locIteration][3]);
+    }
     $('#gameOverlay').css({'min-height':'75%'});
+    
+    
 });
 
 

@@ -503,14 +503,14 @@ nav > a {
     bottom:0px;
     transform:translate(-50%);
     width:35%;
-/*    background-color:RGBA(5,5,5,0.7);*/
     color:white;
     font-family:Stellar;
     text-align: center;
     font-size:180%;
     min-height:10px;
     transition:min-height ease-in-out 560ms;
-    height:45px;
+    height:42px;
+    display:none;
 }
 /*
 #gameOverlay:before {
@@ -580,6 +580,27 @@ nav > a {
 #gameOverlay > .response {
     width:100%;
     text-align:center;
+    height:40vh;
+    background-color:RGBA(5,5,5,0.9);
+    box-sizing: border-box;
+    padding:18px;
+    font-size:18px;
+}
+#gameOverlay > .backgroundInverted {
+    border-top:solid 42px RGBA(5,5,5,0.7);
+    border-left:solid 42px RGBA(0,0,0,0);
+    border-right:solid 42px RGBA(0,0,0,0);
+    position:relative;
+    width:100%;
+    left:50%;
+    box-sizing:content-box;
+    transform:translate(-50%);
+    z-index:-1;
+}
+#gameOverlay .nextLoc {
+    text-align: center;
+    bottom:0px;
+    position:absolute;
 }
 
 .flashRed {

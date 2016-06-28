@@ -70,19 +70,10 @@
                                 <a class="unsafe">Unsafe</a>
                             </div>
                             <div class="background"></div>
-                            <div class="response">
-                                teeeeeeeeeeeeeeeeeeeeeeeeeeeeeest
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                test
+                            <div class="response"></div>
+                            <div class="backgroundInverted">
+                                <a class="nextLoc">Next</a>
                             </div>
-<!--                            <a id="nextLoc">Next Location</a>-->
                         </div>
                     </div>
                 </div>

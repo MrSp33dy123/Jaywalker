@@ -39,11 +39,11 @@ $('#answerBox > a').click(function(){
     if (($(this).attr('class') == 'safe' && mapLevels[currentMap]['LEVELS'][locIteration][2] == true) || ($(this).attr('class') == 'unsafe' && mapLevels[currentMap]['LEVELS'][locIteration][2] == false)) {
         $('#gameOverlay > .response').css("color","green");
         $(this).css('background-color','rgba(0,120,0,0.2)');
-        $('#gameOverlay > .response').html("<i>Correct! </i>" + mapLevels[currentMap]['LEVELS'][locIteration][3]);
+        $('#gameOverlay > .response').html("<i>Correct!</i>  " + mapLevels[currentMap]['LEVELS'][locIteration][3]);
     } else {
         $('#gameOverlay > .response').css("color","red");
         $(this).css('background-color','rgba(0,120,0,0.2)');
-        $('#gameOverlay > .response').html("<i>Inorrect! </i>" + mapLevels[currentMap]['LEVELS'][locIteration][3]);
+        $('#gameOverlay > .response').html("<i>Inorrect!</i>  " + mapLevels[currentMap]['LEVELS'][locIteration][3]);
     }
     $('#gameOverlay').css({'min-height':'75%'});
     

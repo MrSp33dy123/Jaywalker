@@ -41,7 +41,7 @@
                 <div id="contentWrapper">
                     <nav id="navigation">
                         <a href="">thememeldex</a>
-                        <a>help</a>
+                        <a class="help">help</a>
                         <?php if(isset($_COOKIE['username'])) {echo("<a>".$_COOKIE['username']."</a>");} ?>
                     </nav>
                     <div id="content">
@@ -53,27 +53,25 @@
                                 </form>
                                 <div class="background"></div>
                             </div>
-                            
                         </div>
                         <a id="title" class="centered" style="display:none;">
                             <div class="main" style="display:none;"><span>J</span><span>A</span><span>Y</span><span>W</span><span>A</span><span>L</span><span>K</span><span>E</span><span>R</span></div><br>
                             <div class="sub error" style="display:none;">A Road Safety Game</div>
                         </a>
-                        <div id="selectMap">
-                        </div>
+                        <div id="hoverReminder">Hover over title to play</div>
+                        <div id="selectMap"></div>
                         <div id="map" style="height:100vh; width:100vw;"></div>
                         <div id="muteButton" class="fa fa-volume-up" aria-hidden="true"></div>
                         <div id="gameOverlay">
                             <div id="answerBox">
-                                <a class="safe">Safe</a>
+                                <a class="true">Safe</a>
                                 <a class="unsure">Unsure</a>
-                                <a class="unsafe">Unsafe</a>
+                                <a class="false">Unsafe</a>
                             </div>
                             <div class="background"></div>
                             <div class="response"></div>
-                            <div class="backgroundInverted">
-                                <a class="nextLoc">Next</a>
-                            </div>
+                            <div class="backgroundInverted"></div>
+                            <a class="nextLoc">Next</a>
                         </div>
                     </div>
                 </div>

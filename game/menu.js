@@ -15,11 +15,13 @@ var tempMapdata = {
         "MAPDESC":"A small map based in Lincoln, Canterbury. Locations range from modern subdivisions to outback gravel paths and old main roads.",
         "OFFICIAL":"1",
         "LEVELS":[
-            [-43.640204,172.4847637,true,"Right here is a pedestrian crossing--the designated places for you to cross. It's safe to cross here, but still be visualent to oncoming vehicles."],
+            [-43.640204,172.4847637,true,"Right here is a pedestrian crossing--the designated places for you to cross. It's safe to cross here, but still be vigilant to oncoming vehicles."],
             [-43.6327348,172.4845592,false,"You should be careful with this road as cars will begin to travel quite fast down it. Don't cross, as there is a car approaching."],
             [-43.619917,172.4819197,true,"The map description said there were gravel roads, and well... we needed one. Can you see any cars? No? Cross!"],
             [-43.6413878,172.4746944,false,"Crossing at intersections is a bad idea. Instead of having two directions of traffic to worry about, you effectively have four."],
-            [-43.6449333,172.5015875,false,"Crossing on a main road is just generally a bad idea. The cars travel so fast."],[-43.6434251,172.4943935,false,"This is what is known as 'da hood', kids. Crossing the road here is a bad idea, unless it's for the sole purpose of getting yer a** out of here ASAP."],[-43.6379826,172.4833182,true,"Here is fine to cross. Cars won't be going to fast, and you have good visibility. Just make sure your vision is not blocked by a parked car by the side of the road."],
+            [-43.6449333,172.5015875,false,"Crossing on a main road is just generally a bad idea. The cars travel so fast."],
+            [-43.6434251,172.4943935,false,"This is what is known as 'da hood', kids. Crossing the road here is a bad idea, unless it's for the sole purpose of getting yer a** out of here ASAP."],
+            [-43.6379826,172.4833182,true,"Here is fine to cross. Cars won't be going to fast, and you have good visibility. Just make sure your vision is not blocked by a parked car by the side of the road."],
             [-43.6416564,172.4707025,true,"Roundabouts are a dodgey place to be near - for both pedestrians and cars - however if you need to cross, then here is the place to do so. With that said, watch out for traffic in both directions."]
         ]
     },
@@ -27,7 +29,17 @@ var tempMapdata = {
         "MAPCODE":"hdsHoINa",
         "MAPNAME":"New Zealand",
         "MAPDESC":"A map featuring locations from all around New Zealand. Mountains to beaches, from north to south, it's all in here.",
-        "OFFICIAL":"1"
+        "OFFICIAL":"1",
+        "LEVELS":[
+            [-43.6607711,172.620919,true,"The summit road is quite out of the way of well... most things. Including traffic. Beware of the blind corners here--listen out closely, however you should be safe to cross now."],
+            [-43.506325,172.7305636, false, "It's probably not a good idea to cross here. Just down the road, there is a pedestrian crossing. You should probably cross there, as they are designated crossing locations."],
+            [-43.5669107,172.7591716, true, "This is a perfect place to cross! No cars, there's a pedestrian crossing and oh wow! Look at the weather!"],
+            [-42.8869134,171.5553017, false, "Why the heck are you even here?!"],
+            [-41.3276805,174.7869435, true, "Not much traffic here, a nice quiet road. Again, beware of blind corners."],
+            [-37.7431297,176.1050425, false, "Crossing highways is generally a bad idea in any situation. However, if you REALLY need to do so then it's OK provided you can make sure no vehicles are near and can see in all directions."],
+            [-36.8486892,174.7624288, true, "That's one big pointed implement. This 'road' is probably closer to a pathway than anything else-- you shouldn't expect cars to be going much faster than walking pace down it. Feel free to not just cross it, but walk down it. Even so, still watch out for cars, not all drivers are good drivers."],
+            [-46.5974791,168.3392011, true, "'You're bluffing!' Am I?... (Ahem) Yes! It's safe to cross here as there are no cars and plenty of line-of-sight."]
+        ]
     }
 };
 
@@ -173,6 +185,7 @@ $('#title').click(function(){
         $('#accountOverlay').fadeIn(300);
         $('#title').fadeOut(300);
         $('nav').fadeOut(300);
+        $('#hoverReminder').fadeOut(300);
         $(".formWrapper").on("click", ".background", function() {
             $("#accountOverlay").fadeOut(480);
             $('#title').fadeIn(300);
@@ -227,6 +240,7 @@ function selectMap() {
     $('#loadingText').hide();
     $('#accountOverlay').hide();
     $('#title').hide();
+    $('#selectMap').html("");
 //    $.ajax({
 //        url: "ajax/servegamedata.php",
 //        data: {},
@@ -317,6 +331,9 @@ $('#muteButton').click(function(){
     }
 });
 
+$("#navigation .help").click(function(){
+    alert("In order to start the game, hover over the title and click. It'll prompt you for a username if you haven't made one allready-- choose something longer than two characters.\n\nSelect a level, and then you will load into the map. Take a look around, survey the area, and decide if it's safe or unsafe to cross at that location. Consider things like cars, enviroment, conditions, etc. Once you've decided or if you're unsure, click the corrorsponding button at the bottom. Once you've read an explination for the location, click next, repeat, and have fun! :D");
+});
 
 function getCookie(cname) {
     var name = cname + "=";

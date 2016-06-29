@@ -51,6 +51,7 @@ nav > a {
     margin-left:8%;
     text-decoration: none;
     transition:color linear 160ms;
+    cursor:pointer;
 }
 
 #map {
@@ -549,22 +550,22 @@ nav > a {
     display: flex;
     justify-content: space-between;
 }
-#answerBox .safe {
+#answerBox .true {
     color:rgb(205,255,205);
 }
 #answerBox .unsure {
     color:rgb(255,255,205);
 }
-#answerBox .unsafe {
+#answerBox .false {
     color:rgb(255,205,205);
 }
-#answerBox .safe:hover {
+#answerBox .true:hover {
     color:rgb(105,255,105);
 }
 #answerBox .unsure:hover {
     color:rgb(255,255,105);
 }
-#answerBox .unsafe:hover {
+#answerBox .false:hover {
     color:rgb(255,105,105);
 }
 #answerBox > * {
@@ -572,6 +573,7 @@ nav > a {
     padding-left:18px;
     padding-right:18px;
     transition:all linear 200ms;
+    cursor:pointer;
 }
 #answerBox > *:hover {
     background-color:rgba(0,255,255,0.1);
@@ -585,6 +587,7 @@ nav > a {
     box-sizing: border-box;
     padding:18px;
     font-size:18px;
+    position:relative;
 }
 #gameOverlay > .backgroundInverted {
     border-top:solid 42px RGBA(5,5,5,0.7);
@@ -596,11 +599,37 @@ nav > a {
     box-sizing:content-box;
     transform:translate(-50%);
     z-index:-1;
+    text-align: center;
 }
 #gameOverlay .nextLoc {
-    text-align: center;
-    bottom:0px;
+    bottom:42px;
+    height:42px;
+    position:relative;
+    transition:all linear 200ms;
+    cursor:pointer;
+}
+#gameOverlay .nextLoc:hover {
+    color:darkcyan;
+    transform:scale(1.1);
+}
+#gameOverlay > .response > .score {
     position:absolute;
+    bottom:0px;
+    padding:12px;
+    left:50%;
+    transform:translate(-50%);
+    color:darkcyan;
+}
+#hoverReminder {
+    position:fixed;
+    left:50%;
+    bottom:0px;
+    padding:12px;
+    transform: translate(-50%);
+    font-family: Stellar;
+    font-size:18px;
+    font-style: italic;
+/*    color:rgb(30,30,30);*/
 }
 
 .flashRed {
@@ -610,5 +639,9 @@ nav > a {
     border-color:green !important;
 }
 
+.disabledBtn {
+    cursor:default;
+    pointer-events:none;
+}
 
 /* http://codepen.io/kaypooma/pen/ehfjC

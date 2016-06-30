@@ -15,13 +15,13 @@
         <meta property="og:image" content="">
         <meta property="og:image:width" content="300">
         <meta property="og:image:height" content="300">
-        <link rel="stylesheet" type="text/css" href="mainstyle.css">
+        <link rel="stylesheet" type="text/css" href="mainstyle.css?v=<?php echo mt_rand(0,1000)?>">
         <link rel="stylesheet" type="text/css" href="libraries/font-awesome-4.6.3/css/font-awesome.min.css">
         <script src="libraries/jquery-3.0.0.min.js" type="text/javascript" defer="false"></script>
         <script src="libraries/typed.min.js" type="text/javascript" defer="true"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvvmPGE775sxXoxt-VtAEQasBEYHkQ-LU" type="text/javascript"></script>
-        <script src="menu.js" type="text/javascript" defer="true"></script>
-        <script src="game.js" type="text/javascript" defer="true"></script>       
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvvmPGE775sxXoxt-VtAEQasBEYHkQ-LU&callback=generateGMap" type="text/javascript"></script>
+        <script src="menu.js?v=<?php echo mt_rand(0,1000)?>" type="text/javascript" defer="true"></script>
+        <script src="game.js?v=<?php echo mt_rand(0,1000)?>" type="text/javascript" defer="true"></script>       
 	</head>
 	<body>
 		<div id="wrapper">

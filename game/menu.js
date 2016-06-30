@@ -6,7 +6,7 @@ var themeLivery = ['#00FFFF','#FFFFFF','#808080','rgb(0, 194, 190)'];
 var username = '';
 var mapLevels = [];
 var currentMap = '';
-var mute = false;
+var muteBtn = false;
 
 var tempMapdata = {
     "HqlHapAz":{
@@ -314,26 +314,35 @@ function mapSelected(sender) {
 }
 
 $('#muteButton').click(function(){
-    if (mute == false) {
-        $(this).toggleClass('fa-volume-off');
-        $(this).css({'margin-right':'16px;'});
-        BGlake.volume = 0
-        BGcity.volume = 0
-        glitchSFX.volume = 0
-        mute = true;
+    if (muteBtn == false) {
+        $(this).addClass('fa-volume-off');
+        $(this).removeClass('fa-volume-up');
+        $(this).css({'margin-right':'18px;'});
+        muteMenu(true);
     } else {
-        $(this).toggleClass('fa-volume-up');
-        $(this).css({'margin-right':'8px;'});
-        BGlake.volume = 0.1
-        BGcity.volume = 0.5
-        glitchSFX.volume = 1
-        mute = false;
+        $(this).removeClass('fa-volume-off');
+        $(this).addClass('fa-volume-up');
+        $(this).css({'margin-right':'14px;'});
+        muteMenu(false);
     }
 });
 
 $("#navigation .help").click(function(){
     alert("In order to start the game, hover over the title and click. It'll prompt you for a username if you haven't made one allready-- choose something longer than two characters.\n\nSelect a level, and then you will load into the map. Take a look around, survey the area, and decide if it's safe or unsafe to cross at that location. Consider things like cars, enviroment, conditions, etc. Once you've decided or if you're unsure, click the corrorsponding button at the bottom. Once you've read an explination for the location, click next, repeat, and have fun! :D");
 });
+
+function muteMenu(mute) {
+    if (mute == true) {
+        BGlake.volume = 0
+        BGcity.volume = 0
+        glitchSFX.volume = 0
+    } else {
+        BGlake.volume = 0.1
+        BGcity.volume = 0.5
+        glitchSFX.volume = 1
+    }
+    muteBtn = !muteBtn;
+}
 
 function getCookie(cname) {
     var name = cname + "=";
